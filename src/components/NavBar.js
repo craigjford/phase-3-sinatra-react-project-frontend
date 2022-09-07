@@ -35,14 +35,14 @@ const navStyles = {
           VineyardForm
         </NavLink>
         <NavLink
-          to="/vineyardlist"
+          to="/vineyards"
           exact
           style={navStyles}
           activeStyle={{
             background: "darkblue",
           }}
         >
-          VineyardList
+          Vineyards
         </NavLink>
       </div>
     )
