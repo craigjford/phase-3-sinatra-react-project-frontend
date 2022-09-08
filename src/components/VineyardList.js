@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
  const VineyardList = ({ vineyard }) => {
+  console.log('got into vineyardList')
   return (
     <div>
         <Link to={`/vineyards/${vineyard.id}`}>

@@ -21,6 +21,22 @@ const Vineyard = () => {
 
   const wines = vineyard.wines.map(wine => <Wines key={wine.id} wine={wine} />)
 
+//   const addWineForm = (wine) => {
+//       fetch(`http://localhost:9292/wines`, {
+//           method: "POST",
+//           headers: {
+//             "Content-Type": "application/json",
+//           },
+//           body: JSON.stringify ({
+//             name: wine.name,
+//             price: wine.price,
+//             vineyard_id: params[:vineyard_id],
+//             year: wine.year
+//           })
+//       })
+//   }
+
+
   return (
     <div>
         <br />

@@ -1,48 +1,42 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
 
-const navStyles = {
-    display: "inline-block",
-    width: "80px",
-    padding: "12px",
-    margin: "0 6px 6px",
-    background: "blue",
-    textDecoration: "none",
-    color: "white",
-  };
-
   function NavBar() {
+
+    const navStyles = ({ isActive }) => {
+      return {  
+        display: "inline-block",
+        width: "100px",
+        padding: "12px",
+        margin: "0 6px 6px",
+        background: isActive ? "darkblue" : "blue",
+        textDecoration: "none",
+        color: "white",
+      };
+    };  
+
     return (
       <div className="navbar">
         <NavLink
           to="/"
           exact
           style={navStyles}
-          activeStyle={{
-            background: "darkblue",
-          }}
         >
           Home
-        </NavLink>
-        <NavLink
-          to="/vineyardform"
-          exact
-          style={navStyles}
-          activeStyle={{
-            background: "darkblue",
-          }}
-        >
-          VineyardForm
-        </NavLink>
+        </NavLink>     
         <NavLink
           to="/vineyards"
           exact
           style={navStyles}
-          activeStyle={{
-            background: "darkblue",
-          }}
         >
           Vineyards
+        </NavLink>   
+        <NavLink
+          to="/vineyardform"
+          exact
+          style={navStyles}
+        >
+          VineyardForm
         </NavLink>
       </div>
     )
