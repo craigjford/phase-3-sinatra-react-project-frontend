@@ -19,25 +19,25 @@ import { NavLink } from "react-router-dom";
       <div className="navbar">
         <NavLink
           to="/"
-          exact
+          exact="true"
           style={navStyles}
         >
           Home
         </NavLink>     
         <NavLink
           to="/vineyards"
-          exact
+          exact="true"
           style={navStyles}
         >
           Vineyards
         </NavLink>   
-        <NavLink
+        {/* <NavLink
           to="/vineyardform"
           exact
           style={navStyles}
         >
           VineyardForm
-        </NavLink>
+        </NavLink> */}
       </div>
     )
   }
