@@ -31,13 +31,13 @@ import { NavLink } from "react-router-dom";
         >
           Vineyards
         </NavLink>   
-        {/* <NavLink
+        <NavLink
           to="/vineyardform"
-          exact
+          exact="true"
           style={navStyles}
         >
           VineyardForm
-        </NavLink> */}
+        </NavLink>
       </div>
     )
   }
