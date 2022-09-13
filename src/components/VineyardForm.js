@@ -29,7 +29,13 @@ const VineyardForm = ({ onSubmitVineyard }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify({
+        name: formData.name,
+        address: formData.address,
+        city: formData.city,
+        state: formData.state,
+        image_url: formData.image_url
+      })
     })    
     onSubmitVineyard(formData);
 
