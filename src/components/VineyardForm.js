@@ -34,12 +34,11 @@ const VineyardForm = ({ onSubmitVineyard }) => {
     onSubmitVineyard(formData);
 
     const clearInput = {
-      courseName: "",
+      name: "",
       address: "",
       city: "",
       state: "",
-      phoneNumber: "",
-      course_url: ""
+      image_url: ""
     }
 
     setFormData(clearInput);
@@ -58,6 +57,8 @@ const VineyardForm = ({ onSubmitVineyard }) => {
           onChange={handleChange}
           value={formData.name}
         />
+      <br />
+      <br />  
       <label id="formlabel" htmlFor="address">Address </label>
         <input
           type="text"
@@ -67,6 +68,8 @@ const VineyardForm = ({ onSubmitVineyard }) => {
           onChange={handleChange}
           value={formData.address}
         />
+      <br />
+      <br /> 
       <label id="formlabel" htmlFor="city">City </label>
         <input
           type="text"
@@ -76,6 +79,8 @@ const VineyardForm = ({ onSubmitVineyard }) => {
           onChange={handleChange}
           value={formData.city}
         />
+      <br />
+      <br /> 
       <label id="formlabel" htmlFor="state">State </label>
         <input
           type="text"
@@ -85,6 +90,8 @@ const VineyardForm = ({ onSubmitVineyard }) => {
           onChange={handleChange}
           value={formData.state}
         />
+      <br />
+      <br /> 
       <label id="formlabel" htmlFor="image_url">Vineyard Image </label>
         <input
           type="text"
@@ -94,7 +101,9 @@ const VineyardForm = ({ onSubmitVineyard }) => {
           value={formData.image_url}
           onChange={handleChange}
         />
-      <button type="submit" className="submitbtn">Submit</button>
+      <br />
+      <br /> 
+      <button type="submit" className="submit-btn">Submit</button>
     </form>
   </div>
   )

@@ -8,9 +8,10 @@ import VineyardForm from "./components/VineyardForm";
 
 
 function App() {
-  const [vineyards, setVineyards] = useState([{
-    wines: []
-  }])
+  const [vineyards, setVineyards] = useState([]);
+  // const [vineyards, setVineyards] = useState([{
+  //   wines: []
+  // }])
 
   console.log('got into App vineyards = ', vineyards);
 
