@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -22,55 +23,38 @@ const Vineyard = () => {
 
   console.log('in Vineyard - vinyard = ', vineyard)
 
-  // const wines = vineyard.wines.map(wine => <Wines key={wine.id} wine={wine} />)
+  const handleUpdateWines = (id) => {
 
-  //   function handleVineyardDelete(id) {
-//     fetch(`http://localhost:9292/vineyards/${id}`, {
-//         method: 'DELETE'
-//     })
-//     .then((res) => res.json())
-//     .then(onDeleteVineyard(id))
-//   }
+  }
 
-//   function handleVineyardUpdate(id) {
 
-//     fetch(`http://localhost:9292/vineyards/${id}`, {
-//         method: 'PATCH',
-//         headers: { 'Content-Type': 'application/json'},
-//         body: JSON.stringify({ 
-//             name: name
-//         }),
-//     })
-//         .then((res) => res.json())
-//         .then((updatedVineyard) => onUpdateVineyard(updatedVineyard));
-
-//   const addWineForm = (wine) => {
-//       fetch(`http://localhost:9292/wines`, {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify ({
-//             name: wine.name,
-//             price: wine.price,
-//             vineyard_id: params[:vineyard_id],
-//             year: wine.year
-//           })
-//       })
-//   }
-
+  const vywines = vineyard.wines.map((wine) => {
+    return (
+        <h4>{wine.year} {wine.name} - ${wine.price}</h4>
+    )
+  })
 
   return (
     <div>
+      <br />
+      <div className="vine-yard">
+        <h1>{vineyard.name}</h1>
         <br />
-        <h1>Vineyard</h1>
-        <hr/>
-        <h3>Wines:</h3>
         <br />
-        <h3>Hello</h3>
+        <img className="vyimg" src={vineyard.image_url} alt="Infamous Vineyards" height="600px" width="600px"></img>
+        {/* <button className="vy-btn" type="button" onClick={() => handleVineyardDelete(vineyard.id)}>Delete Vineyard</button> */}
         <br />
-    </div>
-  )
+        <h3>Address: {vineyard.address}</h3>
+        <h3>City: {vineyard.city}</h3>
+        <h3>State: {vineyard.state}</h3>
+        <h2>Wines</h2>
+        <div>
+          {vywines}
+        </div>
+        <button className="vy-btn" type="button" onClick={() => handleUpdateWines(vineyard.id)}>Update Wines</button>
+      </div>
+    </div>  
+    )
 }
 
 export default Vineyard;

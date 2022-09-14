@@ -5,13 +5,14 @@ import NavBar from "./components/NavBar";
 import Vineyards from "./components/Vineyards";
 import Vineyard from "./components/Vineyard";
 import VineyardForm from "./components/VineyardForm";
+import Wines from "./components/Wines";
+
 
 
 function App() {
-  const [vineyards, setVineyards] = useState([]);
-  // const [vineyards, setVineyards] = useState([{
-  //   wines: []
-  // }])
+  const [vineyards, setVineyards] = useState([{
+    wines: []
+  }])
 
   console.log('got into App vineyards = ', vineyards);
 
@@ -40,7 +41,7 @@ function App() {
     });
     setVineyards(updatedVineyards);  
   }
-
+  console.log('got into App vineyards2 = ', vineyards);
   return (
     <BrowserRouter>
       <NavBar />
@@ -50,6 +51,7 @@ function App() {
         <Route exact="true" path="/vineyards" element={<Vineyards vineyards={vineyards} onDeleteVineyard={handleDeleteVineyard} onUpdateVineyard={handleUpdateVineyard}/>} />
         <Route exact="true" path="/vineyardform" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
         <Route path="/vineyards/:id" element={<Vineyard />} />
+        <Route exact="true" path="/wines" element={<Wines vineyards={vineyards} />} />
       </Routes>
       </div>
     </BrowserRouter>
