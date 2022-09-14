@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 
 const Vineyard = () => {
@@ -23,9 +23,9 @@ const Vineyard = () => {
 
   console.log('in Vineyard - vinyard = ', vineyard)
 
-  const handleUpdateWines = (id) => {
+  // const handleUpdateWines = (id) => {
 
-  }
+  // }
 
   const vywines = vineyard.wines.map((wine) => {
     return (
@@ -49,7 +49,15 @@ const Vineyard = () => {
         <div>
           {vywines}
         </div>
-        <button className="vy-btn" type="button" onClick={() => handleUpdateWines(vineyard.id)}>Update Wines</button>
+        {/* <button className="vy-btn" type="button" onClick={() => handleUpdateWines(vineyard.id)}>Update Wines</button> */}
+        <div>
+          <Link to={`/wineform/${vineyard.id}`}>Add Wines</Link>
+        </div>
+        <br />
+        <div>
+          <Link to={`/wines/${vineyard.id}`}>Update Wines</Link>
+        </div>
+        <br />
       </div>
     </div>  
     )

@@ -53,7 +53,8 @@ function App() {
         <Route exact="true" path="/vineyardform" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
         <Route path="/vineyards/:id" element={<Vineyard />} />
         <Route exact="true" path="/wines" element={<Wines vineyards={vineyards} />} />
-        <Route exact="true" path="/wineform" element={<WineForm vineyards={vineyards} />} />
+        <Route path="/wineform/:id" element={<WineForm vineyards={vineyards} />} />
+        <Route path="/wines/:id" element={<Wines vineyards={vineyards} />} />
       </Routes>
       </div>
     </BrowserRouter>

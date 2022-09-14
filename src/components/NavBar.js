@@ -38,20 +38,6 @@ import { NavLink } from "react-router-dom";
         >
           VineyardForm
         </NavLink>
-        <NavLink
-          to="/wines"
-          exact="true"
-          style={navStyles}
-        >
-          Wines
-        </NavLink>
-        <NavLink
-          to="/wineform"
-          exact="true"
-          style={navStyles}
-        >
-          WineForm
-        </NavLink>
       </div>
     )
   }
