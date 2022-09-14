@@ -21,7 +21,6 @@ const VineyardList = ({ vineyard, onDeleteVineyard }) => {
       <br />
       <br />
       <button className="vy-btn" type="button" onClick={() => handleVineyardDelete(vineyard.id)}>Delete Vineyard</button>
-      {/* <button className="vy-btn" type="button" onClick={() => handleVineyardUpdate(vineyard.id)}>Update</button> */}
       <div>
         <Link to={`/vineyards/${vineyard.id}`}>Details</Link>
       </div>

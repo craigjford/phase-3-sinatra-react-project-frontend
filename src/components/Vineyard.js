@@ -27,7 +27,6 @@ const Vineyard = () => {
 
   }
 
-
   const vywines = vineyard.wines.map((wine) => {
     return (
         <h4>{wine.year} {wine.name} - ${wine.price}</h4>
@@ -42,7 +41,6 @@ const Vineyard = () => {
         <br />
         <br />
         <img className="vyimg" src={vineyard.image_url} alt="Infamous Vineyards" height="600px" width="600px"></img>
-        {/* <button className="vy-btn" type="button" onClick={() => handleVineyardDelete(vineyard.id)}>Delete Vineyard</button> */}
         <br />
         <h3>Address: {vineyard.address}</h3>
         <h3>City: {vineyard.city}</h3>

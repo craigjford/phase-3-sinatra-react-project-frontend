@@ -6,6 +6,7 @@ import Vineyards from "./components/Vineyards";
 import Vineyard from "./components/Vineyard";
 import VineyardForm from "./components/VineyardForm";
 import Wines from "./components/Wines";
+import WineForm from "./components/WineForm";
 
 
 
@@ -52,6 +53,7 @@ function App() {
         <Route exact="true" path="/vineyardform" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
         <Route path="/vineyards/:id" element={<Vineyard />} />
         <Route exact="true" path="/wines" element={<Wines vineyards={vineyards} />} />
+        <Route exact="true" path="/wineform" element={<WineForm vineyards={vineyards} />} />
       </Routes>
       </div>
     </BrowserRouter>

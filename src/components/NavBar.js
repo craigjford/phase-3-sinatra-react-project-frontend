@@ -45,6 +45,13 @@ import { NavLink } from "react-router-dom";
         >
           Wines
         </NavLink>
+        <NavLink
+          to="/wineform"
+          exact="true"
+          style={navStyles}
+        >
+          WineForm
+        </NavLink>
       </div>
     )
   }

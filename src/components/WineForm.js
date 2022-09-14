@@ -1,10 +1,104 @@
 import React, { useState } from 'react'
 
-const WineForm = () => {
-  const [name, setName] = useState("");
+const WineForm = ({ vineyards, onSubmitWine }) => {
 
+  console.log('got into vineyardform - vineyards = ', vineyards)
+
+  const [formData, setFormData] = useState({
+    name: "",
+    price: 0,
+    vineyard_id: 0,
+    year: ""
+  });
+
+  function handleChange(event) {
+    const name = event.target.name;
+    let value = event.target.value;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    
+    fetch("http://localhost:9292/wines", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        price: formData.price,
+        vineyard_id: formData.vineyard_id,
+        year: formData.year
+      })
+    })    
+    onSubmitWine(formData);
+
+    const clearInput = {
+      name: "",
+      price: 0,
+      vineyard_id: 0,
+      year: ""
+    }
+
+    setFormData(clearInput);
+  }  
+    
   return (
-    <div>WineForm</div>
+    <div>
+    <h1 className="formheader">Please Enter A Wine</h1>
+    <form onSubmit={handleSubmit}>
+      <label id="formlabel" htmlFor="name">Name  </label>
+        <input
+          type="text"
+          id="input-field"
+          name="name"
+          required
+          onChange={handleChange}
+          value={formData.name}
+        />
+      <br />
+      <br />  
+      <label id="formlabel" htmlFor="address">Price </label>
+        <input
+          type="number"
+          id="input-field"
+          name="price"
+          required
+          onChange={handleChange}
+          value={formData.price}
+        />
+      <br />
+      <br /> 
+      <label id="formlabel" htmlFor="vineyard">Vineyard </label>
+        <input
+          type="text"
+          id="input-field"
+          name="vineyard"
+          required
+          onChange={handleChange}
+          value={formData.vineyard_id}
+        />
+      <br />
+      <br /> 
+      <label id="formlabel" htmlFor="year">Year </label>
+        <input
+          type="text"
+          id="input-field"
+          name="year"
+          required
+          onChange={handleChange}
+          value={formData.year}
+        />
+      <br />
+      <br /> 
+      <button type="submit" className="submit-btn">Submit</button>
+    </form>
+  </div>
   )
 }
 
