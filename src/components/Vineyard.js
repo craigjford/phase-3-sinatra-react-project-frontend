@@ -1,37 +1,41 @@
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 
-const Vineyard = () => {
-  const [vineyard, setVineyard] = useState({
-    wines: []
-  })
-  // const [createWineForm, setCreateWineForm] = useState(false)
+const Vineyard = ({ vineyards }) => {
+
 
   const params = useParams();
   console.log('in vineyard - id = ', params.id)
 
-  useEffect(() => {
-    fetch(`http://localhost:9292/vineyards/${params.id}`)
-       .then(res => res.json())
-       .then(data => {
-           console.log(data)
-           setVineyard(data)
-       })   
-  }, [params.id])
-
-  console.log('in Vineyard - vinyard = ', vineyard)
-
-  // const handleUpdateWines = (id) => {
-
-  // }
+  const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
+  
+  const vineyard = vineyardArr[0]
 
   const vywines = vineyard.wines.map((wine) => {
     return (
-        <h4>{wine.year} {wine.name} - ${wine.price}</h4>
+        <h3>{wine.year} {wine.name} - ${wine.price}</h3>
     )
   })
+
+  // useEffect(() => {
+  //   fetch(`http://localhost:9292/vineyards/${params.id}`)
+  //      .then(res => res.json())
+  //      .then(data => {
+  //          console.log(data)
+  //          setVineyard(data)
+  //      })   
+  // }, [params.id])
+
+  console.log('in Vineyard - vinyardcjfcjfcjf = ', vineyard)
+  console.log("vineyard.wines = ", vineyard.wines)
+
+  // const vywines = vineyard.wines.map((wine) => {
+  //   return (
+  //       <h4>{wine.year} {wine.name} - ${wine.price}</h4>
+  //   )
+  // })
 
   return (
     <div>
@@ -49,7 +53,6 @@ const Vineyard = () => {
         <div>
           {vywines}
         </div>
-        {/* <button className="vy-btn" type="button" onClick={() => handleUpdateWines(vineyard.id)}>Update Wines</button> */}
         <div>
           <Link to={`/wineform/${vineyard.id}`}>Add Wines</Link>
         </div>

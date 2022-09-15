@@ -1,26 +1,28 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
-const WineForm = ({ vineyards, onSubmitWine }) => {
+const WineForm = ({vineyards}) => {
 
-  console.log('got into vineyardform - vineyards = ', vineyards)
+  console.log("in wineForm -  vineyards = ", vineyards)
   const params = useParams();
-  console.log('in vineyardform - id = ', params.id) 
-
-  const vineyardData = vineyards.filter((vineyard) => vineyard.id === params.id)
-
-  console.log('vineyardData = ', vineyardData)
+  console.log('in wineform - id = ', params.id) 
   
-  const vineYardName = vineyardData.name;
-
-  console.log('vineyardName = ', vineYardName)
-
   const [formData, setFormData] = useState({
     name: "",
     price: "",
     vineyard_id: "",
     year: ""
   });
+
+  const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
+  
+  const vineyard = vineyardArr[0]
+
+  const vywines = vineyard.wines.map((wine) => {
+    return (
+        <h3>{wine.year} {wine.name} - ${wine.price}</h3>
+    )
+  })
 
   function handleChange(event) {
     const name = event.target.name;
@@ -47,7 +49,7 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
         year: formData.year
       })
     })    
-    onSubmitWine(formData);
+    // onSubmitWine(formData);
 
     const clearInput = {
       name: "",
@@ -57,11 +59,16 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
     }
 
     setFormData(clearInput);
-  }  
+  }
     
   return (
     <div>
-    <h1 className="formheader">Please Enter A Wine for {vineYardName}</h1>
+    <h1 className="formheader">Please Enter A Wine for</h1>
+    <h1>{vineyard.name}</h1>
+    <h2>Wines</h2>
+    <div>
+      {vywines}
+    </div>
     <form onSubmit={handleSubmit}>
       <label id="formlabel" htmlFor="name">Name  </label>
         <input
