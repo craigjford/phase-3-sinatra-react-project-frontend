@@ -11,7 +11,7 @@ const VineyardForm = ({ onSubmitVineyard }) => {
     image_url: ""
   });
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     const name = event.target.name;
     let value = event.target.value;
 
@@ -21,7 +21,7 @@ const VineyardForm = ({ onSubmitVineyard }) => {
     });
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     
     fetch("http://localhost:9292/vineyards", {

@@ -2,9 +2,7 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
 
-
 const Vineyard = ({ vineyards }) => {
-
 
   const params = useParams();
   console.log('in vineyard - id = ', params.id)
@@ -39,7 +37,8 @@ const Vineyard = ({ vineyards }) => {
           {vywines}
         </div>
         <div>
-          <Link to={`/wineform/${vineyard.id}`}>Add Wines</Link>
+          {/* <Link to={`/wineform/${vineyard.id}`}>Add Wines</Link> */}
+          <Link to={`/vineyards/${vineyard.id}/wines/new`}>Add Wines</Link>
         </div>
         <br />
         <div>

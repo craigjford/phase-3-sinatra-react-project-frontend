@@ -52,7 +52,7 @@ const App = () => {
         <Route exact="true" path="/vineyards/new" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
         <Route path="/vineyards/:id" element={<Vineyard vineyards={vineyards} />} />
         <Route exact="true" path="/wines" element={<Wines vineyards={vineyards} />} />
-        <Route path="/wineform/:id" element={<WineForm vineyards={vineyards} />} />
+        <Route path="/vineyards/:id/wines/new" element={<WineForm vineyards={vineyards} />} />
         <Route path="/wines/:id/edit" element={<Wines vineyards={vineyards} />} />
       </Routes>
       </div>
