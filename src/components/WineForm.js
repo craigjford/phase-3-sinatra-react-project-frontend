@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-const WineForm = ({vineyards}) => {
+const WineForm = ({ vineyards, onSubmitWine }) => {
 
   console.log("in wineForm -  vineyards = ", vineyards)
   const params = useParams();
   console.log('in wineform - id = ', params.id) 
-  
+
   const [formData, setFormData] = useState({
     name: "",
     price: "",
@@ -24,7 +24,7 @@ const WineForm = ({vineyards}) => {
     )
   })
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     const name = event.target.name;
     let value = event.target.value;
 
@@ -34,7 +34,7 @@ const WineForm = ({vineyards}) => {
     });
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     
     fetch("http://localhost:9292/wines", {
@@ -49,7 +49,7 @@ const WineForm = ({vineyards}) => {
         year: formData.year
       })
     })    
-    // onSubmitWine(formData);
+    onSubmitWine(formData);
 
     const clearInput = {
       name: "",
