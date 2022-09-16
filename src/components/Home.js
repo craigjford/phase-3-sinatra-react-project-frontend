@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Home() {
+const Home = () => {
   return (
     <div>
         <h1>My Vineyard and Wine Management Application</h1>
