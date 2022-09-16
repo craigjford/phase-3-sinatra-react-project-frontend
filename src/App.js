@@ -42,8 +42,19 @@ const App = () => {
     setVineyards(updatedVineyards);  
   }
 
-  const handleSubmitWine = (newVineyard) => {
-    setVineyards([...vineyards, newVineyard])
+  const handleSubmitWine = (newWineObj) => {
+    const newWine = newWineObj;
+
+    const updatedVineyards = vineyards.map((vineyard) => {
+      if (vineyard.id === newWineObj.vineyard_id) {
+        vineyard.wines.push(newWine)
+        return vineyard;
+      } else {
+        return vineyard;
+      }
+    });
+    setVineyards(updatedVineyards); 
+
   }
 
   return (

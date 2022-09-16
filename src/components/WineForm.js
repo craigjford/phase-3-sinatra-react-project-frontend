@@ -2,21 +2,20 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const WineForm = ({ vineyards, onSubmitWine }) => {
-
   console.log("in wineForm -  vineyards = ", vineyards)
   const params = useParams();
   console.log('in wineform - id = ', params.id) 
-
-  const [formData, setFormData] = useState({
-    name: "",
-    price: "",
-    vineyard_id: "",
-    year: ""
-  });
+  console.log('in wineform - params = ', params.params)
 
   const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
   
-  const vineyard = vineyardArr[0]
+  const vineyard = vineyardArr[0];
+  const [formData, setFormData] = useState({
+    name: "",
+    price: "",
+    vineyard_id: vineyard.id,
+    year: ""
+  });
 
   const vywines = vineyard.wines.map((wine) => {
     return (
@@ -30,13 +29,13 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
 
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value
     });
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+    console.log('wineform - formData = ', formData)
     fetch("http://localhost:9292/wines", {
       method: "POST",
       headers: {
@@ -54,7 +53,7 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
     const clearInput = {
       name: "",
       price: "",
-      vineyard_id: "",
+      vineyard_id: vineyard.id,
       year: ""
     }
 
