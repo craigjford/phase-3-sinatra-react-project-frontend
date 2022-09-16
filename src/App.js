@@ -9,8 +9,7 @@ import Wines from "./components/Wines";
 import WineForm from "./components/WineForm";
 
 
-
-function App() {
+const App = () => {
   const [vineyards, setVineyards] = useState([{
     wines: []
   }])
@@ -23,16 +22,16 @@ function App() {
     .then (data => setVineyards(data))
   }, [])
 
-  function handleSubmitVineyard(newVineyard) {
+  const handleSubmitVineyard = (newVineyard) => {
     setVineyards([...vineyards, newVineyard])
   }
  
-  function handleDeleteVineyard(id) {
+  const handleDeleteVineyard = (id) => {
     const updatedVineyards = vineyards.filter((vineyard) => vineyard.id !== id);
     setVineyards(updatedVineyards); 
   }
   
-  function handleUpdateVineyard(updatedVineyardObj) {
+  const handleUpdateVineyard = (updatedVineyardObj) => {
     const updatedVineyards = vineyards.map((vineyard) => {
       if (vineyard.id === updatedVineyardObj.id) {
         return updatedVineyardObj;
@@ -42,7 +41,7 @@ function App() {
     });
     setVineyards(updatedVineyards);  
   }
-  console.log('got into App vineyards2 = ', vineyards);
+
   return (
     <BrowserRouter>
       <NavBar />
