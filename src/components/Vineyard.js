@@ -19,23 +19,8 @@ const Vineyard = ({ vineyards }) => {
     )
   })
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:9292/vineyards/${params.id}`)
-  //      .then(res => res.json())
-  //      .then(data => {
-  //          console.log(data)
-  //          setVineyard(data)
-  //      })   
-  // }, [params.id])
-
   console.log('in Vineyard - vinyardcjfcjfcjf = ', vineyard)
   console.log("vineyard.wines = ", vineyard.wines)
-
-  // const vywines = vineyard.wines.map((wine) => {
-  //   return (
-  //       <h4>{wine.year} {wine.name} - ${wine.price}</h4>
-  //   )
-  // })
 
   return (
     <div>
@@ -58,7 +43,7 @@ const Vineyard = ({ vineyards }) => {
         </div>
         <br />
         <div>
-          <Link to={`/wines/${vineyard.id}`}>Update Wines</Link>
+          <Link to={`/wines/${vineyard.id}/edit`}>Update Wines</Link>
         </div>
         <br />
       </div>

@@ -50,11 +50,11 @@ function App() {
       <Routes>
         <Route exact="true" path="/" element={<Home />} />
         <Route exact="true" path="/vineyards" element={<Vineyards vineyards={vineyards} onDeleteVineyard={handleDeleteVineyard} onUpdateVineyard={handleUpdateVineyard}/>} />
-        <Route exact="true" path="/vineyardform" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
+        <Route exact="true" path="/vineyards/new" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
         <Route path="/vineyards/:id" element={<Vineyard vineyards={vineyards} />} />
         <Route exact="true" path="/wines" element={<Wines vineyards={vineyards} />} />
         <Route path="/wineform/:id" element={<WineForm vineyards={vineyards} />} />
-        <Route path="/wines/:id" element={<Wines />} />
+        <Route path="/wines/:id/edit" element={<Wines vineyards={vineyards} />} />
       </Routes>
       </div>
     </BrowserRouter>

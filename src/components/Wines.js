@@ -1,27 +1,33 @@
 import React from 'react';
-// import WineList from './WineList';
+import { useParams } from 'react-router-dom'
 
 const Wines = ({ vineyards }) => {
 
   console.log('into wines - vineyards = ', vineyards)
-  // const [wines, setWines] = useState([]);
 
-  // useEffect(() => {
-  //   fetch ("http://localhost:9292/wines")
-  //   .then (res => res.json())
-  //   .then (data => setWines(data))
-  // }, [])
+  const params = useParams();
+  console.log('in wines - id = ', params.id) 
+  
 
-  // console.log('in wines - wines = ', wines);
+  const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
+  
+  const vineyard = vineyardArr[0]
 
-  // const wineList = wines.map((wine) => {
-  //   return(
-  //     <WineList key={wine.id} id={wine.id} name={wine.name} price={wine.price} />
-  //   )
-  // })
+  const vywines = vineyard.wines.map((wine) => {
+    return (
+        <h3>{wine.year} {wine.name} - ${wine.price}</h3>
+    )
+
+  })
+
   return (
     <div>
-      <h1>Wines</h1>
+      <h1>Wine Maintenance for </h1>
+      <h1>{vineyard.name}</h1>
+      <h2>Wines</h2>
+      <div>
+        {vywines}
+      </div>
     </div>
   )
 }

@@ -32,7 +32,7 @@ import { NavLink } from "react-router-dom";
           Vineyards
         </NavLink>   
         <NavLink
-          to="/vineyardform"
+          to="/vineyards/new"
           exact="true"
           style={navStyles}
         >
