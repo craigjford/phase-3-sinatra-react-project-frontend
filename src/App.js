@@ -43,20 +43,22 @@ const App = () => {
   }
 
   const handleSubmitWine = (newWineObj) => {
-    const newWine = newWineObj;
+    console.log('123 newWineObj = ', newWineObj);
 
     const updatedVineyards = vineyards.map((vineyard) => {
       if (vineyard.id === newWineObj.vineyard_id) {
-        vineyard.wines.push(newWine)
+        vineyard.wines.push(newWineObj)
+        console.log('456 vineyard = ', vineyard)
         return vineyard;
       } else {
         return vineyard;
       }
     });
-    setVineyards(updatedVineyards); 
+    console.log('789 updatedVineyards = ', updatedVineyards)
+    // setVineyards(updatedVineyards); 
 
   }
-
+ console.log('in App heading into JSX')
   return (
     <BrowserRouter>
       <NavBar />
@@ -66,9 +68,8 @@ const App = () => {
         <Route exact="true" path="/vineyards" element={<Vineyards vineyards={vineyards} onDeleteVineyard={handleDeleteVineyard} onUpdateVineyard={handleUpdateVineyard}/>} />
         <Route exact="true" path="/vineyards/new" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
         <Route path="/vineyards/:id" element={<Vineyard vineyards={vineyards} />} />
-        <Route exact="true" path="/wines" element={<Wines vineyards={vineyards} />} />
-        <Route path="/vineyards/:id/wines/new" element={<WineForm vineyards={vineyards} onSubmitWine={handleSubmitWine} />} />
-        <Route path="/wines/:id/edit" element={<Wines vineyards={vineyards} />} />
+        <Route path="/vineyards/wines/new/:id" element={<WineForm vineyards={vineyards} onSubmitWine={handleSubmitWine} />} />
+        <Route path="/vineyards/wines/edit/:id" element={<Wines vineyards={vineyards} />} />
       </Routes>
       </div>
     </BrowserRouter>

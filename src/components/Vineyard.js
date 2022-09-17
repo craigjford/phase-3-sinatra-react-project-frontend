@@ -9,13 +9,16 @@ const Vineyard = ({ vineyards }) => {
 
   const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
   
-  const vineyard = vineyardArr[0]
+  const vineyard = vineyardArr[0];
+  let vywines = "";
 
-  const vywines = vineyard.wines.map((wine) => {
-    return (
-        <h3>{wine.year} {wine.name} - ${wine.price}</h3>
-    )
-  })
+  if (vineyard.wines.length !==  0) {
+      vywines = vineyard.wines.map((wine) => {
+        return (
+            <h3>{wine.year} {wine.name} - ${wine.price}</h3>
+        )
+      })
+  }  
 
   console.log('in Vineyard - vinyardcjfcjfcjf = ', vineyard)
   console.log("vineyard.wines = ", vineyard.wines)
@@ -32,17 +35,20 @@ const Vineyard = ({ vineyards }) => {
         <h3>Address: {vineyard.address}</h3>
         <h3>City: {vineyard.city}</h3>
         <h3>State: {vineyard.state}</h3>
+        <div>
+          <Link to={`/vineyards/new`}>Add Vineyard</Link>
+        </div>
+        <br />
         <h2>Wines</h2>
         <div>
-          {vywines}
+          {vywines === '' ? <h3>No Wines Exist</h3> : vywines}
         </div>
         <div>
-          {/* <Link to={`/wineform/${vineyard.id}`}>Add Wines</Link> */}
-          <Link to={`/vineyards/${vineyard.id}/wines/new`}>Add Wines</Link>
+          <Link to={`/vineyards/wines/new/${vineyard.id}`}>Add Wines</Link>
         </div>
         <br />
         <div>
-          <Link to={`/wines/${vineyard.id}/edit`}>Update Wines</Link>
+          <Link to={`/vineyards/wines/edit/${vineyard.id}`}>Update Wines</Link>
         </div>
         <br />
       </div>
