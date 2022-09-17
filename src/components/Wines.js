@@ -8,18 +8,16 @@ const Wines = ({ vineyard, id, name, price, year, onUpdateWine, onDeleteWine }) 
   const params = useParams();
   console.log('in wines - id = ', params.id);
   
-  vineyardId = vineyard.id;
+  const vineyardId = vineyard.id;
   
 
   return (
-    <div>
-      <h1>Wine Maintenance for </h1>
-      <h1>{vineyard.name}</h1>
-      <h2>Wines</h2>
-      <div>
-        {vywines === '' ? <h3>No Wines Exist</h3> : vywines}
-      </div>
-    </div>
+      <div className="radio">
+        <label>
+          <input type="radio" value={id} />
+           {year} {name} - ${price}
+        </label>    
+      </div>  
   )
 }
 

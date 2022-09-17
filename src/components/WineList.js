@@ -35,7 +35,15 @@ const WineList = ({ vineyards, onUpdateWine, onDeleteWine }) => {
 
   return (
     <div>
+      <h1>Wine Maintenance for </h1>
+      <h1>{vineyard.name}</h1>
+      <h2>Wines</h2>
+      <form>
         {vywines}
+      </form> 
+      <br />
+      <br />
+      <button className="submit-btn">Delete</button> 
     </div>
   )
 }
