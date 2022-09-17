@@ -17,11 +17,15 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
     year: ""
   });
 
-  const vywines = vineyard.wines.map((wine) => {
-    return (
-        <h3>{wine.year} {wine.name} - ${wine.price}</h3>
-    )
-  })
+  let vywines = "";
+
+  if (vineyard.wines.length !==  0) {
+      vywines = vineyard.wines.map((wine) => {
+        return (
+            <h3>{wine.year} {wine.name} - ${wine.price}</h3>
+        )
+      })
+  }  
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -66,7 +70,7 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
     <h1>{vineyard.name}</h1>
     <h2>Wines</h2>
     <div>
-      {vywines}
+      {vywines === '' ? <h3>No Wines Exist</h3> : vywines}
     </div>
     <form onSubmit={handleSubmit}>
       <label id="formlabel" htmlFor="name">Name  </label>

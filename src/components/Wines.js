@@ -13,12 +13,15 @@ const Wines = ({ vineyards }) => {
   
   const vineyard = vineyardArr[0]
 
-  const vywines = vineyard.wines.map((wine) => {
-    return (
-        <h3>{wine.year} {wine.name} - ${wine.price}</h3>
-    )
+  let vywines = "";
 
-  })
+  if (vineyard.wines.length !==  0) {
+      vywines = vineyard.wines.map((wine) => {
+        return (
+            <h3>{wine.year} {wine.name} - ${wine.price}</h3>
+        )
+      })
+  } 
 
   return (
     <div>
@@ -26,7 +29,7 @@ const Wines = ({ vineyards }) => {
       <h1>{vineyard.name}</h1>
       <h2>Wines</h2>
       <div>
-        {vywines}
+        {vywines === '' ? <h3>No Wines Exist</h3> : vywines}
       </div>
     </div>
   )
