@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import Vineyards from "./components/Vineyards";
 import Vineyard from "./components/Vineyard";
 import VineyardForm from "./components/VineyardForm";
-import Wines from "./components/Wines";
+import WineList from "./components/WineList";
 import WineForm from "./components/WineForm";
 
 
@@ -47,17 +47,52 @@ const App = () => {
 
     const updatedVineyards = vineyards.map((vineyard) => {
       if (vineyard.id === newWineObj.vineyard_id) {
-        vineyard.wines.push(newWineObj)
-        console.log('456 vineyard = ', vineyard)
-        return vineyard;
+          vineyard.wines.push(newWineObj)
+          console.log('456 vineyard = ', vineyard)
+          return vineyard;
       } else {
-        return vineyard;
+          return vineyard;
       }
     });
     console.log('789 updatedVineyards = ', updatedVineyards)
     // setVineyards(updatedVineyards); 
 
   }
+
+  const handleUpdateWine = (newWineObj) => {
+    console.log('123 newWineObj = ', newWineObj);
+
+    const updatedVineyards = vineyards.map((vineyard) => {
+      if (vineyard.id === newWineObj.vineyard_id) {
+          vineyard.wines.push(newWineObj)
+          console.log('456 vineyard = ', vineyard)
+          return vineyard;
+      } else {
+          return vineyard;
+      }
+    });
+    console.log('789 updatedVineyards = ', updatedVineyards)
+    // setVineyards(updatedVineyards); 
+
+  }
+
+  const handleDeleteWine = (newWineObj) => {
+    console.log('123 newWineObj = ', newWineObj);
+
+    const updatedVineyards = vineyards.map((vineyard) => {
+      if (vineyard.id === newWineObj.vineyard_id) {
+          vineyard.wines.push(newWineObj)
+          console.log('456 vineyard = ', vineyard)
+          return vineyard;
+      } else {
+          return vineyard;
+      }
+    });
+    console.log('789 updatedVineyards = ', updatedVineyards)
+    // setVineyards(updatedVineyards); 
+
+  }
+
  console.log('in App heading into JSX')
   return (
     <BrowserRouter>
@@ -69,7 +104,7 @@ const App = () => {
         <Route exact="true" path="/vineyards/new" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
         <Route path="/vineyards/:id" element={<Vineyard vineyards={vineyards} />} />
         <Route path="/vineyards/wines/new/:id" element={<WineForm vineyards={vineyards} onSubmitWine={handleSubmitWine} />} />
-        <Route path="/vineyards/wines/edit/:id" element={<Wines vineyards={vineyards} />} />
+        <Route path="/vineyards/wines/edit/:id" element={<WineList vineyards={vineyards} onUpdateWine={handleUpdateWine} onDeleteWine={handleDeleteWine}/>} />
       </Routes>
       </div>
     </BrowserRouter>

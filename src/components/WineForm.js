@@ -84,7 +84,7 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
         />
       <br />
       <br />  
-      <label id="formlabel" htmlFor="address">Price </label>
+      <label id="formlabel" htmlFor="price">Price </label>
         <input
           type="number"
           id="input-field"
