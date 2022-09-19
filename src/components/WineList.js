@@ -35,12 +35,12 @@ const WineList = ({ vineyards, onUpdateWine, onDeleteWine }) => {
 
   const handleWineDelete = () => {
     console.log('in wine delete id = ', wineId)
-    // fetch(`http://localhost:9292/wines/${wineId}`, {
-    //     method: 'DELETE'
-    // })
-    // // .then((res) => res.json())
-    // .then(onDeleteWine(vineyard.id, wineId))
-    onDeleteWine(vineyard.id, wineId)
+    console.log(`http://localhost:9292/wines/${wineId}`)
+    fetch(`http://localhost:9292/wines/${wineId}`, {
+        method: 'DELETE'
+    })
+    .then((res) => res.json())
+    .then(onDeleteWine(vineyard.id, wineId))
 }
 
   return (

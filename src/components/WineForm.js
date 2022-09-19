@@ -30,6 +30,9 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
   const handleChange = (event) => {
     const name = event.target.name;
     let value = event.target.value;
+    if (name === "price") {
+        value = parseInt(value)
+    } 
 
     setFormData({
       ...formData,
