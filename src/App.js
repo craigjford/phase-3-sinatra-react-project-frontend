@@ -76,19 +76,20 @@ const App = () => {
 
   }
 
-  const handleDeleteWine = (newWineObj) => {
-    console.log('123 newWineObj = ', newWineObj);
+  const handleDeleteWine = (vineyardId, wineId) => {
+    console.log('ABC vineyardId = ', vineyardId);
+    console.log('ABC wineId = ', wineId);
 
-    const updatedVineyards = vineyards.map((vineyard) => {
-      if (vineyard.id === newWineObj.vineyard_id) {
-          vineyard.wines.push(newWineObj)
-          console.log('456 vineyard = ', vineyard)
-          return vineyard;
-      } else {
-          return vineyard;
-      }
-    });
-    console.log('789 updatedVineyards = ', updatedVineyards)
+    // const updatedVineyards = vineyards.map((vineyard) => {
+    //   if (vineyard.id === wineObj.vineyard_id) {
+    //       vineyard.wines.filter((wine) => wine.id !== id)
+    //       console.log('DEF vineyard = ', vineyard)
+    //       return vineyard;
+    //   } else {
+    //       return vineyard;
+    //   }
+    // });
+    // console.log('GHI updatedVineyards = ', updatedVineyards)
     // setVineyards(updatedVineyards); 
 
   }

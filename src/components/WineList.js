@@ -16,34 +16,46 @@ const WineList = ({ vineyards, onUpdateWine, onDeleteWine }) => {
 
   let vywines = "";
 
-  // if (vineyard.wines.length !==  0) {
-  //   vywines = vineyard.wines.map((wine) => {
-  //     return (
-  //         <h3>{wine.year} {wine.name} - ${wine.price}</h3>
-  //     )
-  //   })
-  // } 
+  let wineId;
+
+  const handleSelectedOption = (id) => {
+      wineId = parseInt(id)
+      console.log('Bonanza - id = ', wineId)
+  }
+
 
   if (vineyard.wines.length !==  0) {
     vywines = vineyard.wines.map((wine) => {
       return (
-          <Wines key={wine.id} vineyard={vineyard} id={wine.id} name={wine.name} price={wine.price} year={wine.year}
-                onupdateWine={onUpdateWine}  onDeleteWine={onDeleteWine} />
+          <Wines key={wine.id} vineyard={vineyard} wine={wine} id={wine.id} name={wine.name} price={wine.price} 
+          year={wine.year} onSelectedOption={handleSelectedOption} />
       )
     })
   } 
 
+  const handleWineDelete = () => {
+    console.log('in wine delete id = ', wineId)
+    // fetch(`http://localhost:9292/wines/${wineId}`, {
+    //     method: 'DELETE'
+    // })
+    // // .then((res) => res.json())
+    // .then(onDeleteWine(vineyard.id, wineId))
+    onDeleteWine(vineyard.id, wineId)
+}
+
   return (
     <div>
+      <br />
+      <br />  
       <h1>Wine Maintenance for </h1>
       <h1>{vineyard.name}</h1>
       <h2>Wines</h2>
-      <form>
-        {vywines}
-      </form> 
+      <div>
+        {vywines === '' ? <h3>No Wines Exist</h3> : vywines}
+      </div> 
       <br />
       <br />
-      <button className="submit-btn">Delete</button> 
+      <button className="submit-btn" type="button" onClick={handleWineDelete}>Delete</button> 
     </div>
   )
 }
