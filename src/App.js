@@ -52,9 +52,7 @@ const App = () => {
           return vineyard;
       }
     });
-    console.log('789 updatedVineyards = ', updatedVineyards)
     setVineyards(updatedVineyards); 
-
   }
 
   const handleUpdateWine = (newWineObj) => {
@@ -75,20 +73,16 @@ const App = () => {
   }
 
   const handleDeleteWine = (vineyardId, wineId) => {
-    console.log('ABC vineyardId = ', vineyardId);
-    console.log('ABC wineId = ', wineId);
 
     const updatedVineyards = vineyards.map((vineyard) => {
       if (vineyard.id === vineyardId) {
           const newWineArr = vineyard.wines.filter((wine) => wine.id !== wineId)
           vineyard.wines = newWineArr;
-          console.log('DEF vineyard = ', vineyard)
           return vineyard;
       } else {
           return vineyard;
       }
     });
-    console.log('GHI updatedVineyards = ', updatedVineyards)
     setVineyards(updatedVineyards); 
 
   }
@@ -103,8 +97,8 @@ const App = () => {
         <Route exact="true" path="/vineyards" element={<Vineyards vineyards={vineyards} onDeleteVineyard={handleDeleteVineyard} onUpdateVineyard={handleUpdateVineyard}/>} />
         <Route exact="true" path="/vineyards/new" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
         <Route path="/vineyards/:id" element={<Vineyard vineyards={vineyards} />} />
-        <Route path="/vineyards/wines/new/:id" element={<WineForm vineyards={vineyards} onSubmitWine={handleSubmitWine} />} />
-        <Route path="/vineyards/wines/edit/:id" element={<WineList vineyards={vineyards} onUpdateWine={handleUpdateWine} onDeleteWine={handleDeleteWine}/>} />
+        <Route path="/vineyards/wines/add/:id" element={<WineForm vineyards={vineyards} onSubmitWine={handleSubmitWine} />} />
+        <Route path="/vineyards/wines/update/:id" element={<WineList vineyards={vineyards} onDeleteWine={handleDeleteWine} onUpdateWine={handleUpdateWine} onSubmitWine={handleSubmitWine} />} />
       </Routes>
       </div>
     </BrowserRouter>

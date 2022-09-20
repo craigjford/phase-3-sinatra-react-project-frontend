@@ -43,13 +43,15 @@ const Vineyard = ({ vineyards }) => {
         <div>
           {vywines === '' ? <h3>No Wines Exist</h3> : vywines}
         </div>
+        <br />
         <div>
-          <Link to={`/vineyards/wines/new/${vineyard.id}`}>Add Wines</Link>
+          <Link to={`/vineyards/wines/add/${vineyard.id}`}>Add Wines</Link>
         </div>
         <br />
         <div>
-          {vywines === '' ? "" : <Link to={`/vineyards/wines/edit/${vineyard.id}`}>Update Wines</Link>}
+          {vywines === '' ? "" : <Link to={`/vineyards/wines/update/${vineyard.id}`}>Update/Delete Wines</Link>}
         </div>
+        <br />
         <br />
       </div>
     </div>  

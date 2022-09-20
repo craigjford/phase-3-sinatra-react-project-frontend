@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const WineForm = ({ vineyards, onSubmitWine }) => {
-  console.log("in wineForm -  vineyards = ", vineyards)
   const params = useParams();
-  console.log('in wineform - id = ', params.id) 
-  console.log('in wineform - params = ', params.params)
-
-  const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
-  
-  const vineyard = vineyardArr[0];
   const [formData, setFormData] = useState({
     name: "",
     price: "",
-    vineyard_id: vineyard.id,
+    vineyard_id: params.id,
     year: ""
   });
+
+  console.log("in wineForm -  vineyards = ", vineyards)
+
+  console.log('in wineform - id = ', params.id) 
+
+  const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
+  const vineyard = vineyardArr[0];
 
   let vywines = "";
 
