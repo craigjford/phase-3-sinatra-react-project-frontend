@@ -7,7 +7,7 @@ const Wines = ({ wine, id, name, price, year, onSelectedOption }) => {
 
 
   const params = useParams();
-  console.log('in wines - id = ', params.id);
+  console.log('in wines - vineyard.id = ', params.vineyard_id);
 
   const getSelectedOption = (e) => {
     console.log('getSelectedOption - id = ', e.target.value);

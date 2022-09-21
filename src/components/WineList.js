@@ -7,9 +7,9 @@ const WineList = ({ vineyards, onDeleteWine  }) => {
   const params = useParams();
 
   console.log('into winelist - vineyards = ', vineyards)
-  console.log('in winelist - id = ', params.id); 
+  console.log('in winelist - id = ', params.vineyard_id); 
 
-  const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)); 
+  const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.vineyard_id)); 
   
   const vineyard = vineyardArr[0];
 
@@ -36,7 +36,6 @@ const WineList = ({ vineyards, onDeleteWine  }) => {
     fetch(`http://localhost:9292/wines/${wineId}`, {
         method: 'DELETE'
     })
-    .then((res) => res.json())
     .then(onDeleteWine(vineyard.id, wineId))
   }
 

@@ -46,7 +46,7 @@ const Vineyard = ({ vineyards }) => {
         </div>
         <br />
         <div>
-          {vywines === '' ? "" : <Link to={`/vineyards/wines/delete/${vineyard.id}`}>Delete Wines</Link>}
+          {vywines === '' ? "" : <Link to={`/vineyards/${vineyard.id}/wines/delete`}>Delete Wines</Link>}
         </div>
         <br />
         <br />
