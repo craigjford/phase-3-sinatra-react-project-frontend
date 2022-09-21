@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 
 const VineyardForm = ({ onSubmitVineyard }) => {
-  console.log('got into vineyardform')
-
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -36,8 +34,9 @@ const VineyardForm = ({ onSubmitVineyard }) => {
         state: formData.state,
         image_url: formData.image_url
       })
-    })    
-    onSubmitVineyard(formData);
+    }) 
+    .then(res => res.json())
+    .then(data => onSubmitVineyard(data))   
 
     const clearInput = {
       name: "",

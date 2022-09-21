@@ -10,7 +10,6 @@ const VineyardList = ({ vineyard, onDeleteVineyard }) => {
     fetch(`http://localhost:9292/vineyards/${id}`, {
         method: 'DELETE'
     })
-    .then((res) => res.json())
     .then(onDeleteVineyard(id))
 }
 
@@ -21,6 +20,10 @@ const VineyardList = ({ vineyard, onDeleteVineyard }) => {
       <br />
       <br />
       <button className="vy-btn" type="button" onClick={() => handleVineyardDelete(vineyard.id)}>Delete Vineyard</button>
+      <div>
+        <Link to={`/vineyards/new`}>Add Vineyard</Link>
+      </div>
+      <br />
       <div>
         <Link to={`/vineyards/${vineyard.id}`}>Details</Link>
       </div>

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom'
 
-const Wines = ({ vineyard, wine, id, name, price, year, onSelectedOption }) => {
+const Wines = ({ wine, id, name, price, year, onSelectedOption }) => {
 
-  console.log('into wines - vineyard = ', vineyard)
   console.log('into wines - wine = ', wine)
 
 

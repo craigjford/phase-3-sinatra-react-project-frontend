@@ -8,8 +8,9 @@ const Vineyard = ({ vineyards }) => {
   console.log('in vineyard - id = ', params.id)
 
   const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
-  
+  console.log('in vineyard - vineyardArr = ', vineyardArr)
   const vineyard = vineyardArr[0];
+  console.log('in vineyard - vineyard = ', vineyard)
   let vywines = "";
 
   if (vineyard.wines.length !==  0) {
@@ -35,21 +36,17 @@ const Vineyard = ({ vineyards }) => {
         <h3>Address: {vineyard.address}</h3>
         <h3>City: {vineyard.city}</h3>
         <h3>State: {vineyard.state}</h3>
-        <div>
-          <Link to={`/vineyards/new`}>Add Vineyard</Link>
-        </div>
-        <br />
-        <h2>Wines</h2>
+        <h2><u>Wines</u></h2>
         <div>
           {vywines === '' ? <h3>No Wines Exist</h3> : vywines}
         </div>
         <br />
         <div>
-          <Link to={`/vineyards/wines/add/${vineyard.id}`}>Add Wines</Link>
+          <Link to={`/vineyards/${vineyard.id}/wines/new`}>Add Wines</Link>
         </div>
         <br />
         <div>
-          {vywines === '' ? "" : <Link to={`/vineyards/wines/update/${vineyard.id}`}>Update/Delete Wines</Link>}
+          {vywines === '' ? "" : <Link to={`/vineyards/wines/delete/${vineyard.id}`}>Delete Wines</Link>}
         </div>
         <br />
         <br />

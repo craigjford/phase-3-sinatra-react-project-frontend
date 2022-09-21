@@ -6,15 +6,15 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
-    vineyard_id: params.id,
+    vineyard_id: parseInt(params.vineyard_id),
     year: ""
   });
 
   console.log("in wineForm -  vineyards = ", vineyards)
 
-  console.log('in wineform - id = ', params.id) 
+  console.log('in wineform - id = ', params.vineyard_id) 
 
-  const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
+  const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.vineyard_id)) 
   const vineyard = vineyardArr[0];
 
   let vywines = "";
@@ -28,22 +28,33 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
   }  
 
   const handleChange = (event) => {
-    const name = event.target.name;
+    
+    let name = event.target.name;
     let value = event.target.value;
+
+    console.log('form - name = ', name)
+    console.log('form - value = ', value)
+
     if (name === "price") {
-        value = parseInt(value)
+      value = parseInt(value)
     } 
 
+    if (name === "year") {
+      value = parseInt(value)
+    }
+ 
     setFormData({
       ...formData,
       [name]: value
     });
+
+    console.log('in handleChange - formData = ', formData)
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('wineform - formData = ', formData)
-    fetch("http://localhost:9292/wines", {
+    fetch(`http://localhost:9292/vineyards/${formData.vineyard_id}/wines`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,16 +62,16 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
       body: JSON.stringify({
         name: formData.name,
         price: formData.price,
-        vineyard_id: formData.vineyard_id,
         year: formData.year
       })
-    })    
-    onSubmitWine(formData);
+    })   
+    .then(res => res.json())
+    .then(data => onSubmitWine(data))
 
     const clearInput = {
       name: "",
       price: "",
-      vineyard_id: vineyard.id,
+      vineyard_id: parseInt(vineyard.id),
       year: ""
     }
 
@@ -71,41 +82,37 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
     <div>
     <h1 className="formheader">Please Enter A Wine for</h1>
     <h1>{vineyard.name}</h1>
-    <h2>Wines</h2>
+    <h2><u>Wines</u></h2>
     <div>
       {vywines === '' ? <h3>No Wines Exist</h3> : vywines}
     </div>
     <form onSubmit={handleSubmit}>
+     <label id="formlabel" htmlFor="year">Year </label>
+        <input
+          type="number"
+          id="update-intfield"
+          name="year"
+          required
+          onChange={handleChange}
+          value={formData.year}
+        />
       <label id="formlabel" htmlFor="name">Name  </label>
         <input
           type="text"
-          id="input-field"
+          id="update-field"
           name="name"
           required
           onChange={handleChange}
           value={formData.name}
         />
-      <br />
-      <br />  
       <label id="formlabel" htmlFor="price">Price </label>
         <input
           type="number"
-          id="input-field"
+          id="update-intfield"
           name="price"
           required
           onChange={handleChange}
           value={formData.price}
-        />
-      <br />
-      <br /> 
-      <label id="formlabel" htmlFor="year">Year </label>
-        <input
-          type="text"
-          id="input-field"
-          name="year"
-          required
-          onChange={handleChange}
-          value={formData.year}
         />
       <br />
       <br /> 
