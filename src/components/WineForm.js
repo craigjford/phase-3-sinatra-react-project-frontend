@@ -81,7 +81,7 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
   return (
     <div>
     <h1 className="formheader">Please Enter A Wine for</h1>
-    <h1>{vineyard.name}</h1>
+    <h1><i>{vineyard.name}</i></h1>
     <h2><u>Wines</u></h2>
     <div>
       {vywines === '' ? <h3>No Wines Exist</h3> : vywines}

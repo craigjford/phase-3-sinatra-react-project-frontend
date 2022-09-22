@@ -44,7 +44,7 @@ const WineList = ({ vineyards, onDeleteWine  }) => {
       <br />
       <br />  
       <h1>Wine Maintenance for </h1>
-      <h1>{vineyard.name}</h1>
+      <h1><i>{vineyard.name}</i></h1>
       <h2><u>Wines</u></h2>
       <br />
       <div>
