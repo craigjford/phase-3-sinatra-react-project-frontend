@@ -7,6 +7,7 @@ import Vineyard from "./components/Vineyard";
 import VineyardForm from "./components/VineyardForm";
 import WineList from "./components/WineList";
 import WineForm from "./components/WineForm";
+import WineUpdate from "./components/WineUpdate";
 
 
 const App = () => {
@@ -105,8 +106,8 @@ const App = () => {
         <Route exact="true" path="/vineyards" element={<Vineyards vineyards={vineyards} onDeleteVineyard={handleDeleteVineyard} onUpdateVineyard={handleUpdateVineyard}/>} />
         <Route exact="true" path="/vineyards/new" element={<VineyardForm onSubmitVineyard={handleSubmitVineyard} />} />
         <Route path="/vineyards/:id" element={<Vineyard vineyards={vineyards} />} />
-        {/* <Route path="/vineyards/wines/add/:id" element={<WineForm vineyards={vineyards} onSubmitWine={handleSubmitWine} />} /> */}
         <Route path="/vineyards/:vineyard_id/wines/new" element={<WineForm vineyards={vineyards} onSubmitWine={handleSubmitWine} />} />
+        <Route path="/vineyards/:vineyard_id/wines/update" element={<WineUpdate vineyards={vineyards} onUpdateWine={handleUpdateWine} />} />
         <Route path="/vineyards/:vineyard_id/wines/delete" element={<WineList vineyards={vineyards} onDeleteWine={handleDeleteWine} />} />
       </Routes>
       </div>
