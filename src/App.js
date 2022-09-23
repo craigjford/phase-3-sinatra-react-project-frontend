@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import Vineyards from "./components/Vineyards";
 import Vineyard from "./components/Vineyard";
 import VineyardForm from "./components/VineyardForm";
-import WineList from "./components/WineList";
+import WineDelete from "./components/WineDelete";
 import WineForm from "./components/WineForm";
 import WineUpdate from "./components/WineUpdate";
 
@@ -59,7 +59,6 @@ const App = () => {
   }
 
   const handleUpdateWine = (newWineObj) => {
-    console.log('newWineObj = ', newWineObj);
 
     const updatedVineyards = vineyards.map((vineyard) => {
       if (vineyard.id === newWineObj.vineyard_id) {
@@ -70,22 +69,23 @@ const App = () => {
             return wine;
           }
         })  
-        console.log('in App - newWineArr = ', newWineArr);
         vineyard.wines = newWineArr;
         return vineyard;
       } else {
         return vineyard;
       }
     });
-    console.log('updatedVineyards = ', updatedVineyards)
     setVineyards(updatedVineyards); 
   }
 
   const handleDeleteWine = (vineyardId, wineId) => {
+    console.log('App - handleDeleteWine - wineId = ', wineId);
+    console.log('App - handleDeleteWine - vineyardId = ', vineyardId);
 
     const updatedVineyards = vineyards.map((vineyard) => {
       if (vineyard.id === vineyardId) {
-          const newWineArr = vineyard.wines.filter((wine) => wine.id !== wineId)
+          const newWineArr = vineyard.wines.filter((wine) => wine.id !== parseInt(wineId))
+          console.log('in App - Delete Wines - newWineArr = ', newWineArr)
           vineyard.wines = newWineArr;
           return vineyard;
       } else {
@@ -96,7 +96,6 @@ const App = () => {
 
   }
 
- console.log('in App heading into JSX')
   return (
     <BrowserRouter>
       <NavBar />
@@ -108,7 +107,7 @@ const App = () => {
         <Route path="/vineyards/:id" element={<Vineyard vineyards={vineyards} />} />
         <Route path="/vineyards/:vineyard_id/wines/new" element={<WineForm vineyards={vineyards} onSubmitWine={handleSubmitWine} />} />
         <Route path="/vineyards/:vineyard_id/wines/update" element={<WineUpdate vineyards={vineyards} onUpdateWine={handleUpdateWine} />} />
-        <Route path="/vineyards/:vineyard_id/wines/delete" element={<WineList vineyards={vineyards} onDeleteWine={handleDeleteWine} />} />
+        <Route path="/vineyards/:vineyard_id/wines/delete" element={<WineDelete vineyards={vineyards} onDeleteWine={handleDeleteWine} />} />
       </Routes>
       </div>
     </BrowserRouter>

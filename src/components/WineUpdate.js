@@ -38,7 +38,7 @@ const WineUpdate = ({ vineyards, onUpdateWine }) => {
           return (
             <div>
                 <label>
-                    <input type="radio" name="selected-wine" value={wine.id} onChange={getSelectedOption} />
+                    <input type="radio" name="selected-wine" value={wine.id} checked={false} onChange={getSelectedOption} />
                 {wine.year} {wine.name} - ${wine.price}
                 </label> 
                 <br /> 
