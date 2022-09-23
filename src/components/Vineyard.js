@@ -5,12 +5,9 @@ import { useParams, Link } from 'react-router-dom'
 const Vineyard = ({ vineyards }) => {
 
   const params = useParams();
-  console.log('in vineyard - id = ', params.id)
 
   const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.id)) 
-  console.log('in vineyard - vineyardArr = ', vineyardArr)
   const vineyard = vineyardArr[0];
-  console.log('in vineyard - vineyard = ', vineyard)
   let vywines = "";
 
   if (vineyard.wines.length !==  0) {
@@ -20,9 +17,6 @@ const Vineyard = ({ vineyards }) => {
         )
       })
   }  
-
-  console.log('in Vineyard - vinyardcjfcjfcjf = ', vineyard)
-  console.log("vineyard.wines = ", vineyard.wines)
 
   return (
     <div>

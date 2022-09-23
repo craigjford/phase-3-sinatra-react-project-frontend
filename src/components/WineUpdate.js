@@ -12,19 +12,13 @@ const WineUpdate = ({ vineyards, onUpdateWine }) => {
 
     const params = useParams();
 
-    // console.log("in wineUpdate -  vineyards = ", vineyards)
-  
-    // console.log('in wineUpdate - vineyardid = ', params.vineyard_id) 
-
     const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.vineyard_id)) 
-    // console.log('in wineUpdate - array = ', vineyardArr);
     const vineyard = vineyardArr[0];
-    // console.log('in wineUpdate - vineyard = ', vineyard);
+
 
     let wineId;
   
     const getSelectedOption = (e) => {
-        console.log('getSelectedOption - wine = ', e.target.value);
         wineId = e.target.value;
         let wineArr = vineyard.wines.filter((wine) => { return wine.id === parseInt(wineId)});
         let formData = wineArr[0];
@@ -50,7 +44,6 @@ const WineUpdate = ({ vineyards, onUpdateWine }) => {
     const handleChange = (event) => {
         const name = event.target.name;
         let value = event.target.value;
-        console.log('in handleChange ', name, ' ', value)
         setFormData({
           ...formData,
           [name]: value,
@@ -59,7 +52,6 @@ const WineUpdate = ({ vineyards, onUpdateWine }) => {
 
     const handleUpdateWine = (e) => {
         e.preventDefault();
-        console.log('in handleUpdateWine - formData = ', formData);
         wineId = formData.id;
         
 
@@ -73,7 +65,6 @@ const WineUpdate = ({ vineyards, onUpdateWine }) => {
             }),
         })
             .then((res) => res.json())
-        //     .then((updatedWine) => console.log('updatedWine = ', updatedWine));
             .then((updatedWine) => onUpdateWine(updatedWine));   
 
         const clearInput = {
@@ -82,8 +73,7 @@ const WineUpdate = ({ vineyards, onUpdateWine }) => {
             price: "",
             vineyard_id: 0,
             year: ""
-        }
-          
+        }      
         setFormData(clearInput);    
     }
 

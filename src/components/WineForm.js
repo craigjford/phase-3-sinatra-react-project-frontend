@@ -10,10 +10,6 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
     year: ""
   });
 
-  console.log("in wineForm -  vineyards = ", vineyards)
-
-  console.log('in wineform - id = ', params.vineyard_id) 
-
   const vineyardArr = vineyards.filter((vineyard) => parseInt(vineyard.id) === parseInt(params.vineyard_id)) 
   const vineyard = vineyardArr[0];
 
@@ -21,7 +17,7 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
 
   if (vineyard.wines.length !==  0) {
       vywines = vineyard.wines.map((wine) => {
-        return (
+        return ( 
             <h3>{wine.year} {wine.name} - ${wine.price}</h3>
         )
       })
@@ -31,9 +27,6 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
     
     let name = event.target.name;
     let value = event.target.value;
-
-    console.log('form - name = ', name)
-    console.log('form - value = ', value)
 
     if (name === "price") {
       value = parseInt(value)
@@ -47,13 +40,12 @@ const WineForm = ({ vineyards, onSubmitWine }) => {
       ...formData,
       [name]: value
     });
-
-    console.log('in handleChange - formData = ', formData)
   }
 
   const handleSubmit = (event) => {
+
     event.preventDefault();
-    console.log('wineform - formData = ', formData)
+
     fetch(`http://localhost:9292/vineyards/${formData.vineyard_id}/wines`, {
       method: "POST",
       headers: {

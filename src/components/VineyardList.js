@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom'
 
 const VineyardList = ({ vineyard, onDeleteVineyard }) => {
 
-  console.log('got into vineyardList vineyard = ', vineyard)
-  console.log('vineyardList - wines = ', vineyard.wines)
-
   const handleVineyardDelete = (id) => {
     fetch(`http://localhost:9292/vineyards/${id}`, {
         method: 'DELETE'

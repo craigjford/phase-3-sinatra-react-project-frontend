@@ -25,7 +25,6 @@ const App = () => {
 
   const handleSubmitVineyard = (newVineyard) => {
     newVineyard.wines = [];
-    console.log('BATMAN - got into handleSubmitVineyard = ', newVineyard)
     setVineyards([...vineyards, newVineyard])
   }
  
@@ -79,13 +78,10 @@ const App = () => {
   }
 
   const handleDeleteWine = (vineyardId, wineId) => {
-    console.log('App - handleDeleteWine - wineId = ', wineId);
-    console.log('App - handleDeleteWine - vineyardId = ', vineyardId);
 
     const updatedVineyards = vineyards.map((vineyard) => {
       if (vineyard.id === vineyardId) {
           const newWineArr = vineyard.wines.filter((wine) => wine.id !== parseInt(wineId))
-          console.log('in App - Delete Wines - newWineArr = ', newWineArr)
           vineyard.wines = newWineArr;
           return vineyard;
       } else {
