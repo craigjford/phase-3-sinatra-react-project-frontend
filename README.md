@@ -3,6 +3,8 @@
 ## Overview
 The project will enable users to keep a repository of vineyards and the wines available for each vineyard.  The frontend is written in React and is a sinple page application.  The frontend will display Vineyard information and their associated Wines information.  It will also interact with the background to send CRUD requests via Sinatra API.  The backend is written in Ruby and utilizes Sinatra and Ruby with active record.  The backend will called by the frontend to perform CRUD actions on both the Vineyards and its associated Wines.  The backend will utilize SQL Lite to persist the data and send back the necessay information in JSON format to allow the frontend to perform necssary actions.
 
+![](public/project.drawio)  
+
 ## React Frontend
 
 The frontend will initially display a Home page with a Navigation bar of Home and Vineyards upon invocation.  The frontend utilizes React's Router functionality to navigate throughout the single page application.  Following is a list of Components and how to navigate to each:
@@ -48,5 +50,429 @@ Using Ruby's Rake db:create_migration and db:migration, two tables were created,
 To accomodate all of the frontend's CRUD requests, the following actions are in the Vineyard controller and the Wine controller.  The Vineyard contoller handles the following routes.  The get request gets all the vineyards and their associated wines by utiliziing the include parameter.  Additionally, the request return the results JSON-ified back to the frontend.  There is a delete request which passes id as a paramenter and deletes the one Vineyard with the passed id.  The post route creates a new vineyard with the parameters passed.  It returns the resulting JSON back to the frontend.
 
 The Wine controller has the following actions.  The post wines uses vineyard_id to add wines to the associated vineyard.  The delete route is passed a wine id to delete the appropriate wine.  The update route is also passed in a wine id to ensure the correct wine's name, price and year are appropriately updated.
+
+## Commits - 40 on the Frontend - 18 commits on the Backend
+
+Commits on Sep 26, 2022
+Completed version
+
+@craigjford
+craigjford committed 5 minutes ago
+ 
+Commits on Sep 23, 2022
+Started final testing
+
+@craigjford
+craigjford committed 3 days ago
+ 
+Commits on Sep 22, 2022
+fixed deleete is App state
+
+@craigjford
+craigjford committed 4 days ago
+ 
+Message added final touches to WineUpdate
+
+@craigjford
+craigjford committed 4 days ago
+ 
+Commits on Sep 21, 2022
+add WineUpdate coomponent/initial code/added Route in App
+
+@craigjford
+craigjford committed 5 days ago
+ 
+fixed useParames in Wine Components
+
+@craigjford
+craigjford committed 5 days ago
+ 
+Fixed routes and adding a vineyard(making sure an empty array was par… 
+
+@craigjford
+craigjford committed 5 days ago
+ 
+Commits on Sep 20, 2022
+added Update fields to Winelist and made changes to index.css
+
+@craigjford
+craigjford committed 6 days ago
+ 
+Commits on Sep 19, 2022
+Corrected code to delete a wine in both WineList and App components
+
+@craigjford
+craigjford committed 7 days ago
+ 
+Commits on Sep 18, 2022
+added Delete wine code to winwlist and App
+
+@craigjford
+craigjford committed 8 days ago
+ 
+Commits on Sep 17, 2022
+added radio buttons and content to 
+
+@craigjford
+craigjford committed 9 days ago
+ 
+Added Code to list wines to update/delete. Changed WineList route in App
+
+@craigjford
+craigjford committed 9 days ago
+ 
+Added code to WineForm and Wines to handle if now wines exist
+
+@craigjford
+craigjford committed 9 days ago
+ 
+Corrected problem if a vineyard has no wines in VineYard component
+
+@craigjford
+craigjford committed 9 days ago
+ 
+Commits on Sep 16, 2022
+added handleSubmitWine to add a wine
+
+@craigjford
+craigjford committed 10 days ago
+ 
+Added Submit code to WineForm
+
+@craigjford
+craigjford committed 10 days ago
+ 
+Cleaned up code in VineyardForm component
+
+@craigjford
+craigjford committed 10 days ago
+ 
+Cleaned up Home Component
+
+@craigjford
+craigjford committed 10 days ago
+ 
+Cleanup up code in App Component
+
+@craigjford
+craigjford committed 10 days ago
+ 
+Commits on Sep 15, 2022
+Added code to Wine Update component and fixa routing issue
+
+@craigjford
+craigjford committed 11 days ago
+ 
+corrected wine lists in Vinyard and WineForm components
+
+@craigjford
+craigjford committed 11 days ago
+ 
+Commits on Sep 14, 2022
+Added code to WineForm and app(route)
+
+@craigjford
+craigjford committed 12 days ago
+ 
+Added code to Navbar and created Wineform
+
+@craigjford
+craigjford committed 12 days ago
+ 
+added tyle to center buttons. Added code to Vineyard and VineyardList… 
+
+@craigjford
+craigjford committed 12 days ago
+ 
+Commits on Sep 13, 2022
+added Links to Veineyard from VinyardList
+
+@craigjford
+craigjford committed 13 days ago
+ 
+Commits on Sep 12, 2022
+Corrected image_url initialization field
+
+@craigjford
+craigjford committed 14 days ago
+ 
+Corrected index.css for vineyard form
+
+@craigjford
+craigjford committed 14 days ago
+ 
+added to code to stylesheets and VineyardForm. Added code to routes i… 
+
+@craigjford
+craigjford committed 14 days ago
+ 
+Commits on Sep 9, 2022
+Added code/functionalityto VineyardList component
+
+@craigjford
+craigjford committed 17 days ago
+ 
+Commits on Sep 8, 2022
+Added styling to vineyardList in index.css
+
+@craigjford
+craigjford committed 18 days ago
+ 
+added code/functionality to vineyardList component
+
+@craigjford
+craigjford committed 18 days ago
+ 
+Corrected NavBar component to comply with v6
+
+@craigjford
+craigjford committed 18 days ago
+ 
+Commits on Sep 7, 2022
+coded Vineyard component and added Wine component
+
+@craigjford
+craigjford committed 19 days ago
+ 
+Created Vineyard and VineyardList components
+
+@craigjford
+craigjford committed 19 days ago
+ 
+Commits on Sep 6, 2022
+Created the Home component
+
+@craigjford
+craigjford committed 20 days ago
+
+added code to navigation bar
+
+@craigjford
+craigjford committed 20 days ago
+ 
+Added react-router-dom v6. Added components directoty
+
+@craigjford
+craigjford committed 20 days ago
+ 
+created react frontend using npx create-react-app
+
+@craigjford
+craigjford committed 20 days ago
+ 
+Initial commit
+
+@craigjford
+craigjford committed 20 days ago  
+
+##  Backend Development
+
+Commits on Sep 22, 2022
+Fixed Update Wines
+
+@craigjford
+craigjford committed 4 days ago
+ 
+Commits on Sep 20, 2022
+Add code to Wine controller for PATCH
+
+@craigjford
+craigjford committed 6 days ago
+ 
+Commits on Sep 19, 2022
+corrected delete code to wines controller
+
+@craigjford
+craigjford committed 7 days ago
+ 
+Commits on Sep 18, 2022
+added delete to wines controller
+
+@craigjford
+craigjford committed 8 days ago
+ 
+Commits on Sep 15, 2022
+changed Vineyard post
+
+@craigjford
+craigjford committed 11 days ago
+ 
+deleted singleton vineyard GET from controller
+
+@craigjford
+craigjford committed 11 days ago
+ 
+Commits on Sep 13, 2022
+Added Delete code for Vineyards
+
+@craigjford
+craigjford committed 13 days ago
+ 
+Commits on Sep 12, 2022
+added POST code to vineyards controller
+
+@craigjford
+craigjford committed 14 days ago
+ 
+Commits on Sep 8, 2022
+Corrected Wine model
+
+@craigjford
+craigjford committed 18 days ago
+ 
+Commits on Sep 7, 2022
+added code to wine and vineyard controllers
+
+@craigjford
+craigjford committed 19 days ago
+ 
+Commits on Sep 6, 2022
+Added vineyard and wines controllers to config.ru
+
+@craigjford
+craigjford committed 20 days ago
+ 
+created route in vineyard contoller to gett all vineyards
+
+@craigjford
+craigjford committed 20 days ago
+ 
+Created vineyards and wines controllers
+
+@craigjford
+craigjford committed 20 days ago
+ 
+Commits on Sep 5, 2022
+Created Vineyard and Wine models
+
+@craigjford
+craigjford committed 21 days ago
+ 
+Changed seeds file and ran
+
+@craigjford
+craigjford committed 21 days ago
+ 
+added collumn year to wines table
+
+@craigjford
+craigjford committed 21 days ago
+ 
+Commits on Sep 3, 2022
+Created tables through db:create_migration and db:migrate
+
+@craigjford
+craigjford committed 23 days ago
+ 
+Created seeds file
+
+@craigjford
+craigjford committed 23 days ago
+
+## Backend Commits
+
+Commits on Sep 22, 2022
+Fixed Update Wines
+
+@craigjford
+craigjford committed 4 days ago
+ 
+Commits on Sep 20, 2022
+Add code to Wine controller for PATCH
+
+@craigjford
+craigjford committed 6 days ago
+ 
+Commits on Sep 19, 2022
+corrected delete code to wines controller
+
+@craigjford
+craigjford committed 7 days ago
+ 
+Commits on Sep 18, 2022
+added delete to wines controller
+
+@craigjford
+craigjford committed 8 days ago
+ 
+Commits on Sep 15, 2022
+changed Vineyard post
+
+@craigjford
+craigjford committed 11 days ago
+ 
+deleted singleton vineyard GET from controller
+
+@craigjford
+craigjford committed 11 days ago
+ 
+Commits on Sep 13, 2022
+Added Delete code for Vineyards
+
+@craigjford
+craigjford committed 13 days ago
+ 
+Commits on Sep 12, 2022
+added POST code to vineyards controller
+
+@craigjford
+craigjford committed 14 days ago
+ 
+Commits on Sep 8, 2022
+Corrected Wine model
+
+@craigjford
+craigjford committed 18 days ago
+ 
+Commits on Sep 7, 2022
+added code to wine and vineyard controllers
+
+@craigjford
+craigjford committed 19 days ago
+ 
+Commits on Sep 6, 2022
+Added vineyard and wines controllers to config.ru
+
+@craigjford
+craigjford committed 20 days ago
+ 
+created route in vineyard contoller to gett all vineyards
+
+@craigjford
+craigjford committed 20 days ago
+ 
+Created vineyards and wines controllers
+
+@craigjford
+craigjford committed 20 days ago
+ 
+Commits on Sep 5, 2022
+Created Vineyard and Wine models
+
+@craigjford
+craigjford committed 21 days ago
+ 
+Changed seeds file and ran
+
+@craigjford
+craigjford committed 21 days ago
+ 
+added collumn year to wines table
+
+@craigjford
+craigjford committed 21 days ago
+ 
+Commits on Sep 3, 2022
+Created tables through db:create_migration and db:migrate
+
+@craigjford
+craigjford committed 23 days ago
+ 
+Created seeds file
+
+@craigjford
+craigjford committed 23 days ago
+
+
 
 
