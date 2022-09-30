@@ -45,7 +45,7 @@ const App = () => {
   }
 
   const handleSubmitWine = (newWineObj) => {
-    // const updatedVineyards = vineyards.map(vineyard => {vineyard.id === newWineObj.vineyard_id ? {...vineyard, wines:[...vineyard.wines, newWineObj]} : vineyard}) 
+
     const updatedVineyards = vineyards.map((vineyard) => {
       if (vineyard.id === newWineObj.vineyard_id) {
           vineyard.wines.push(newWineObj)
