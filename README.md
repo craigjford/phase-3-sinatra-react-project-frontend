@@ -9,6 +9,7 @@ The project will enable users to keep a repository of vineyards and the wines av
 
 The front end will initially display a Home page with a Navigation bar of Home and Vineyards upon invocation.  The front end utilizes React's Router functionality to navigate throughout the single page application.  Following is a list of Components and how to navigate to each:
 
+```console
 App
 |_ NavBar
     |_Home
@@ -19,6 +20,7 @@ App
                 |_WineForm
                 |_WineDelete
                 |_WineUpdate  
+```
 
 ## React Component Functions
 
