@@ -2,8 +2,8 @@
 
 ## Overview
 The project will enable users to keep a repository of vineyards and the wines available for each vineyard.  The front end is written in React and is a single page application.  The front end will display Vineyard information and their associated Wines information.  It will also interact with the back end to send CRUD requests via Sinatra API.  The back end is written in Ruby and utilizes Sinatra and Ruby with active record.  The back end will be called by the front end to perform CRUD actions on both the Vineyards and its associated Wines.  The back end will utilize SQL Lite to persist the data and send back the necessay information in JSON format to allow the front end to display and perform necssary actions.
-
-![](public/project.drawio)  
+ 
+![Vineyards ERD](https://github.com/craigjford/phase-3-sinatra-react-project-frontend/blob/main/public/project.drawio)
 
 ## React Front end
 
