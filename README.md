@@ -3,12 +3,14 @@
 ## Overview
 The project will enable users to keep a repository of vineyards and the wines available for each vineyard.  The front end is written in React and is a single page application.  The front end will display Vineyard information and their associated Wines information.  It will also interact with the back end to send CRUD requests via Sinatra API.  The back end is written in Ruby and utilizes Sinatra and Ruby with active record.  The back end will be called by the front end to perform CRUD actions on both the Vineyards and its associated Wines.  The back end will utilize SQL Lite to persist the data and send back the necessay information in JSON format to allow the front end to display and perform necssary actions.
  
-!(https://github.com/craigjford/phase-3-sinatra-react-project-frontend/blob/main/public/project.png)
+- [dbdiagram.io][]
+[dbdiagram.io]: https://github.com/craigjford/phase-3-sinatra-react-project-frontend/blob/main/public/project.png
 
 ## React Front end
 
 The repo for the frontend can be found at:
-!(https://github.com/craigjford/phase-3-sinatra-react-project-frontend)
+- [frontend-repo][]
+[frontend-repo]: https://github.com/craigjford/phase-3-sinatra-react-project-frontend
 
 The front end will initially display a Home page with a Navigation bar of Home and Vineyards upon invocation.  The front end utilizes React's Router functionality to navigate throughout the single page application.  Following is a list of Components and how to navigate to each:
 
@@ -138,6 +140,8 @@ class WinesController < ApplicationController
 
 end
 ```
+
+
 
 ## Commits - 40 on the Front end - 18 commits on the back end
 
