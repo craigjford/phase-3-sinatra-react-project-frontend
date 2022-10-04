@@ -7,6 +7,9 @@ The project will enable users to keep a repository of vineyards and the wines av
 
 ## React Front end
 
+The repo for the frontend can be found at:
+!(https://github.com/craigjford/phase-3-sinatra-react-project-frontend)
+
 The front end will initially display a Home page with a Navigation bar of Home and Vineyards upon invocation.  The front end utilizes React's Router functionality to navigate throughout the single page application.  Following is a list of Components and how to navigate to each:
 
 ```console
@@ -47,11 +50,94 @@ WineUpdate - is passed all the vineyards and their associated wines and a callba
 
 ##  back end Using Sinatra and Ruby Activerecord
 
-Using Ruby's Rake db:create_migration and db:migration, two tables will be created, Vineyards and Wines.  The vineyards table contains name, address, city, state and imageUrl.  The wines table contains name, price, year and vineyard_id.  A vineyard has many wines and a wine belongs to a unique vineyard.  Hence, wine's vineyard_id is a foreign key to vineyards.  These associations are defined in the Vineyard.rb and Wine.rb models.  Vineyard.rd establishes that a Vineyard has many wines.  Vineyard.rd also uses the dependent destroy parameters that insures upon deleting a vineyard, all of its associated wines will also be deleted.  Wine.rb establishes that a wine belongs to a vineyard.
+Using Ruby's Rake db:create_migration and db:migration, two tables will be created, Vineyards and Wines.  The vineyards table contains name, address, city, state and imageUrl.  The wines table contains name, price, year and vineyard_id.  A vineyard has many wines and a wine belongs to a unique vineyard.  Hence, wine's vineyard_id is a foreign key to vineyards.  The schema can is as follows:
+
+```console
+ActiveRecord::Schema.define(version: 2022_09_05_233501) do
+
+  create_table "vineyards", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "image_url"
+  end
+
+  create_table "wines", force: :cascade do |t|
+    t.string "name"
+    t.integer "price"
+    t.integer "vineyard_id"
+    t.integer "year"
+  end
+
+end
+```
+
+These associations are defined in the Vineyard.rb and Wine.rb models.  Vineyard.rd establishes that a Vineyard has many wines.  Vineyard.rd also uses the dependent destroy parameters that insures upon deleting a vineyard, all of its associated wines will also be deleted.  Wine.rb establishes that a wine belongs to a vineyard.
+
+```console
+class Vineyard < ActiveRecord::Base
+
+    has_many :wines, dependent: :destroy
+    
+end
+
+class Wine < ActiveRecord::Base
+    
+    belongs_to :vineyard 
+    
+end
+```
 
 To accomodate all of the front end's CRUD requests, the following actions are in the Vineyard controller and the Wine controller.  The Vineyard contoller handles the following routes.  The get request gets all the vineyards and their associated wines by utiliziing the include parameter.  Additionally, the request return the results JSON-ified back to the front end.  There is a delete request which passes id as a paramenter and deletes the one Vineyard with the passed id.  The post route creates a new vineyard with the parameters passed.  It returns the resulting JSON back to the front end.
 
+```console
+class VineyardsController < ApplicationController
+
+    get '/vineyards' do
+        vineyards = Vineyard.all
+        vineyards.to_json(include: :wines)
+    end    
+
+    delete '/vineyards/:id' do
+        vineyard = Vineyard.find(params[:id])
+        vineyard.destroy  
+    end  
+
+    post '/vineyards' do
+        vineyard = Vineyard.create(name: params[:name], address: params[:address],
+                city: params[:city], state: params[:state], image_url: params[:image_url])
+         vineyard.to_json      
+    end
+
+end
+```
+
 The Wine controller has the following actions.  The post wines uses vineyard_id to add wines to the associated vineyard.  The delete route is passed a wine id to delete the appropriate wine.  The update route is also passed in a wine id to ensure the correct wine's name, price and year are appropriately updated.
+
+```console
+class WinesController < ApplicationController
+
+    post '/vineyards/:vineyard_id/wines' do
+        vineyard = Vineyard.find(params[:vineyard_id])
+        wine = vineyard.wines.create(name: params[:name], price: params[:price],
+                 year: params[:year])
+        wine.to_json
+    end
+
+    delete '/wines/:id' do
+        wine = Wine.find(params[:id])
+        wine.destroy 
+    end
+
+    patch '/wines/:id' do
+        wine = Wine.find(params[:id])
+        wine.update(name: params[:name], price: params[:price], year: params[:year])  
+        wine.to_json
+    end
+
+end
+```
 
 ## Commits - 40 on the Front end - 18 commits on the back end
 
